@@ -10,9 +10,11 @@ Card Game Like Top Trumps write in HTML5 + Javascript using the Canvas and OOP
 In Progress
 
 ###Features:
-- card: can now create a card object with properties
+- Card: can now create a card object with properties
 - cardList: our card "database"
 - getRandomCard: generates a random card from the cardList
-- drawCard: display a generic card in canvas
+- Deck: can create now a deck with name, size and push cards into it
 
+###Development:
+Im a little confused on how to draw in canvas the card. I already can draw a generic card with no information and position setting its x and y position in canvas but Im not sure if I should implement a GameObject that handle the position stuff alone or if I should incorporate the position and draw stuff inside the Card class.
 
