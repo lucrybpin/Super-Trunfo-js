@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style type="text/css">
+	 body {
+		margin: 0px;
+	}
+	canvas {
+		display: block;
+	}
+</style>
+<body>
+
+	<canvas id="canvas">canvas no supported</canvas>
+
+</body>
+
+<script type="text/javascript" src="cards.js"></script>
+<script type="text/javascript" src="gameplay.js"></script>
+<script type="text/javascript">
+
+//Global Variables
+var canvas, context, width, height;
+
+window.onload = function() {
+	canvas = document.getElementById("canvas");
+	context = canvas.getContext('2d');
+	width = canvas.width = window.innerWidth;
+	height = canvas.height = window.innerHeight;
+
+	canvas.addEventListener("mousedown", function(event) {
+		var x = event.pageX;
+		var y = event.pageY;
+		console.log("region:" + event.region +"X=" + x + " y=" + y);
+	});
+
+
+	//Players
+	var player = new Player("Player");
+	var player2 = new Player("Player2");
+	//Generate random card
+	var randomCard = getRandomCard();
+	var randomCard2 = getRandomCard();
+	//push random cards
+	player.deck.add(randomCard);
+	player2.deck.add(randomCard2);
+	//each player draws a card
+	var p1Card = player.deck.drawCard();
+	var p2Card = player2.deck.drawCard();
+	p1Card.print();
+	p2Card.print();
+
+	renderCard(p1Card,3*width/4, height/2);
+	renderCard(p2Card,width/4, height/2);
+
+	if(p1Card.status1 > p2Card.status1) alert("you won");
+	else if(p1Card.status1 < p2Card.status1) alert("you lose");
+	else alert("match");
+
+};
+
+renderCard = function(card, xPos, yPos) {
+	var x = xPos,
+		y = yPos;
+
+	if(xPos === undefined){x = (width/2);} 
+	if(yPos === undefined){y = (height/2);}	
+	var	c_width = 200,
+		c_height = 300,
+		c_startX = 10,
+		c_posX = x - c_width/2,
+		c_posY = y - c_height/2,
+		c_name = card.name,
+		c_status1 = card.status1,
+		c_status2 = card.status2,
+		c_status3 = card.status3,
+		c_status4 = card.status4,
+		c_status5 = card.status5;
+		c_rarity = card.rarity;
+
+		
+
+	//card - border
+	context.beginPath();
+	context.rect(c_posX, c_posY ,c_width, c_height);
+	context.fillStyle = "#59ABE3";
+	context.fill();
+	//card - image
+	context.beginPath();
+	context.rect(c_posX + 20, c_posY + 20, c_width - 40, c_height - 180);
+	context.fillStyle = "#FFFFFF";
+	context.fill();
+	//card - rarity
+	context.beginPath();
+	context.arc(c_posX + 100, c_posY + 20, 16, 0, Math.PI * 2);
+	context.fillStyle = "#000000";
+	context.fill();
+	context.font = "14px Arial";
+	context.fillStyle = "#FFFFFF";
+	context.textAlign = "center";
+	context.fillText(c_rarity,c_posX + 100, c_posY + 25);
+	//card - Name Background
+	context.beginPath();
+	context.rect(c_posX + 10, c_posY + 130, c_width -20, 34);
+	context.fillStyle = "#D2D7D3";
+	context.fill();
+	//card - Name
+	context.font = "21px Arial";
+	context.fillStyle = "#212121";
+	context.textAlign = "center";
+	context.fillText(c_name,c_posX + 95, c_posY + 155);
+	//card - status 1
+	context.beginPath();
+	context.rect(c_posX + 10, c_posY + 174, 1.5*card.status1, 12);
+	context.fillStyle = "#90C695";
+	context.fill();
+	context.font = "14px Arial";
+	context.fillStyle = "#000000";
+	context.fillText(formatSize(c_status1,3),c_posX + 165, c_posY + 185);
+	//card - status 2
+	context.beginPath();
+	context.rect(c_posX + 10, c_posY + 194, 1.5*card.status2, 12);
+	context.fillStyle = "#F1A9A0";
+	context.fill();
+	context.font = "14px Arial";
+	context.fillStyle = "#000000";
+	context.fillText(formatSize(c_status2,3),c_posX + 165, c_posY + 205);
+	//card - status 3
+	context.beginPath();
+	context.rect(c_posX + 10, c_posY + 214, 1.5*card.status3, 12);
+	context.fillStyle = "#446CB3";
+	context.fill();
+	context.font = "14px Arial";
+	context.fillStyle = "#000000";
+	context.fillText(formatSize(c_status3,3),c_posX + 165, c_posY + 225);
+	//card - status 4
+	context.beginPath();
+	context.rect(c_posX + 10, c_posY + 234, 1.5*card.status4, 12);
+	context.fillStyle = "#F5D76E";
+	context.fill();
+	context.font = "14px Arial";
+	context.fillStyle = "#000000";
+	context.fillText(formatSize(c_status4,3),c_posX + 165, c_posY + 245);
+	//card - status 5
+	context.beginPath();
+	context.rect(c_posX + 10, c_posY + 254, 1.5*card.status5, 12);
+	context.fillStyle = "#D35400";
+	context.fill();
+	context.font = "14px Arial";
+	context.fillStyle = "#000000";
+	context.fillText(formatSize(c_status5,3),c_posX + 165, c_posY + 265);
+	//card - environment
+	context.beginPath();
+	context.arc(c_posX + 100, c_posY + 283, 12, 0, Math.PI * 2);
+	context.stroke();
+}
+
+formatSize = function (number, cases) {
+	var str = number + "";
+	while (str.length < cases) str = "0" + str;
+	return str;
+};
+
+</script>
+</html>
