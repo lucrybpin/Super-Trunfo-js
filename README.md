@@ -10,7 +10,7 @@ Card Game Like Top Trumps write in HTML5 + Javascript using the Canvas and OOP
 6/3/2016
 
 ###Status:
-In Progress
+Paused
 
 ###Features:
 - **Card**: can now create a card object with properties
@@ -21,4 +21,7 @@ In Progress
 
 ###Development:
 Now starting to focus in the player and combat stuff. Jesus be with you!
+
+###NOTE:
+Due to my final course paper I have to pause the project. I believe in 2017 I'll be back with this project (not sure).
 
