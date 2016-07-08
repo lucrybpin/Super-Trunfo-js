@@ -20,8 +20,9 @@ Paused
 - **renderCard**: render your card in the screen using renderCard
 
 ###Development:
-Now starting to focus in the player and combat stuff. Jesus be with you!
+Now starting to focus in the player and combat stuff.
 
 ###NOTE:
-Due to my final course paper I have to pause the project. I believe in 2017 I'll be back with this project (not sure).
+Due to my final course work have to pause the project. I believe in 2017 I'll be back with this project (not sure).
 
+That is it. Jesus be with you!
