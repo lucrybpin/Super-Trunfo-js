@@ -49,29 +49,36 @@ window.onload = function() {
 	//each player draws a card
 	var p1Card = player.deck.drawCard();
 	var p2Card = player2.deck.drawCard();
+	//just for debug (browser console)
 	p1Card.print();
 	p2Card.print();
-
+	//position the cards. You = right and Computer = Left
 	renderCard(p1Card,3*width/4, height/2);
 	renderCard(p2Card,width/4, height/2);
-
+	//Combat
 	if(p1Card.status1 > p2Card.status1) alert("you won");
 	else if(p1Card.status1 < p2Card.status1) alert("you lose");
 	else alert("match");
 
 };
 
+//renderCard()
+//
+//	render the card on the browser
+//
 renderCard = function(card, xPos, yPos) {
 	var x = xPos,
-		y = yPos;
-
+	    y = yPos;
+	    
+	//If not defined, the card is centralized in the screen
 	if(xPos === undefined){x = (width/2);} 
 	if(yPos === undefined){y = (height/2);}	
-	var	c_width = 200,
-		c_height = 300,
+	
+	var	c_width = 200,			//card width
+		c_height = 300,			//card height;
 		c_startX = 10,
-		c_posX = x - c_width/2,
-		c_posY = y - c_height/2,
+		c_posX = x - c_width/2,		//starting x position of the card = desired position - half card width
+		c_posY = y - c_height/2,	//starting y position of the card = desired position - half card height
 		c_name = card.name,
 		c_status1 = card.status1,
 		c_status2 = card.status2,
@@ -79,7 +86,6 @@ renderCard = function(card, xPos, yPos) {
 		c_status4 = card.status4,
 		c_status5 = card.status5;
 		c_rarity = card.rarity;
-
 		
 
 	//card - border
@@ -157,6 +163,11 @@ renderCard = function(card, xPos, yPos) {
 	context.stroke();
 }
 
+
+//formatSize()
+//
+//	adds 0's to the left card status text to end up with a 3 digits number
+//
 formatSize = function (number, cases) {
 	var str = number + "";
 	while (str.length < cases) str = "0" + str;
