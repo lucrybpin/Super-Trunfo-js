@@ -7,7 +7,7 @@ Card Game Like Top Trumps write in HTML5 + Javascript using the Canvas and OOP
 1/3/2016
 
 ###Last Update:
-6/3/2016
+23/5/2017
 
 ###Status:
 Paused
@@ -20,9 +20,9 @@ Paused
 - **renderCard**: render your card in the screen using renderCard
 
 ###Development:
-Now starting to focus in the player and combat stuff.
+todo: focus in the player and combat stuff.
 
 ###NOTE:
-Due to my final course work have to pause the project. I believe in 2017 I'll be back with this project (not sure).
+I'm working and studying. Not much time left to play here now :[
 
 That is it. Jesus be with you!
