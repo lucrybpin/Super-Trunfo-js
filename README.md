@@ -26,3 +26,6 @@ todo: focus in the player and combat stuff.
 I'm working and studying. Not much time left to play here now :[
 
 That is it. Jesus be with you!
+
+
+![](preview.png)
